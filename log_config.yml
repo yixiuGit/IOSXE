@@ -1,0 +1,27 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    formatter: simple
+    level: DEBUG
+    filename: ios_restconf.log
+    maxBytes: 1024
+    backupCount: 3
+loggers:
+  sampleLogger:
+    level: DEBUG
+    handlers: [file]
+    propagate: False
+disable_existing_loggers: False
+
+root:
+  level: DEBUG
+  handlers: [file]
