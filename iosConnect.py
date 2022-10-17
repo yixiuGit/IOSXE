@@ -279,10 +279,14 @@ class IOSXE_Device:
 
 
     def write_to_db(self, inputData,hostName, tableName):
+        #this is for local testing
         myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+        #this is for docker mongodb://user:password@containername:27017
+        myclient = pymongo.MongoClient("mongodb://root:rootpassword@code_mongodb_1:27017")
+        #code_mongodb_1 -- container name
         mydb = myclient[tableName]
         mycol = mydb[hostName]
-
+        # mongo admin -u root -p rootpassword to access mongodb container
         x = mycol.insert_one(inputData)
         print(x)
 

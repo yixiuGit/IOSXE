@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  iosxe:
+    build: .
+    tty: true   #in order to keep iosxe service running
+    networks:
+      - ios_network
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ios_network
+networks:
+  ios_network:
+volumes:
+  mongodb_data:

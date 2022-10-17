@@ -28,3 +28,13 @@ It is not part of this script
 - Cisco-IOS-XE-device-hardware-oper:device-hardware-data
 - cisco-smart-license:licensing
 - Cisco-IOS-XE-interfaces-oper:interfaces
+
+### Docker related info
+- Build container
+    - docker-compose up
+- Access python container to run script
+    - docker exec -it containerID sh
+- Run python script
+    - python iosConnect.py
+- Access Mongo DB
+    - mongo admin -u username -p password
